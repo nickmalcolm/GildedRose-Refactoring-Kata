@@ -1,5 +1,5 @@
 module GildedRose
 end
 
-require 'item'
+require 'gilded_rose/goods'
 require 'gilded_rose/updater'
