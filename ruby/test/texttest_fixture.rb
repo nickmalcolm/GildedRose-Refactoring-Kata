@@ -4,16 +4,16 @@ require 'test_helper'
 
 puts "OMGHAI!"
 items = [
-  GildedRose::Item.new(name="+5 Dexterity Vest", sell_in=10, quality=20),
-  GildedRose::Item.new(name="Aged Brie", sell_in=2, quality=0),
-  GildedRose::Item.new(name="Elixir of the Mongoose", sell_in=5, quality=7),
-  GildedRose::Item.new(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
-  GildedRose::Item.new(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
-  GildedRose::Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
-  GildedRose::Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
-  GildedRose::Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
+  GildedRose::Goods.good_for(name="+5 Dexterity Vest", sell_in=10, quality=20),
+  GildedRose::Goods.good_for(name="Aged Brie", sell_in=2, quality=0),
+  GildedRose::Goods.good_for(name="Elixir of the Mongoose", sell_in=5, quality=7),
+  GildedRose::Goods.good_for(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
+  GildedRose::Goods.good_for(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
+  GildedRose::Goods.good_for(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20),
+  GildedRose::Goods.good_for(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=49),
+  GildedRose::Goods.good_for(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=49),
   # This Conjured item does not work properly yet
-  GildedRose::Item.new(name="Conjured Mana Cake", sell_in=3, quality=6), # <-- :O
+  GildedRose::Goods.good_for(name="Conjured Mana Cake", sell_in=3, quality=6), # <-- :O
 ]
 
 days = 2
