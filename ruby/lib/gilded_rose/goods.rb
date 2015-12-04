@@ -2,7 +2,14 @@ module GildedRose
   module Goods
 
     def self.good_for(name, sell_in, quality)
-      Base.new(name, sell_in, quality)
+      klass = case name
+      when AgedBrie::NAME
+        AgedBrie
+      else
+        Base
+      end
+
+      klass.new(name, sell_in, quality)
     end
 
   end

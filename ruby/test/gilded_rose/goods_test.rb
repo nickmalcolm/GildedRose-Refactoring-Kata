@@ -7,4 +7,9 @@ class BaseTest < Test::Unit::TestCase
     assert good.is_a? GildedRose::Goods::Base
   end
 
+  test "Aged Brie gets its own class" do
+    good = GildedRose::Goods.good_for("Aged Brie", 1, 2)
+    assert good.is_a? GildedRose::Goods::AgedBrie
+  end
+
 end
