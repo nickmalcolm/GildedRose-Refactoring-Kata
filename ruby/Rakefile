@@ -1,0 +1,8 @@
+require 'rake/testtask'
+
+task :test do
+  $LOAD_PATH.unshift('lib', 'test')
+  Dir.glob('./test/**/*_test.rb') { |f| require f }
+end
+
+Dir.glob('./lib/tasks/**/*.rake') { |f| load f }
