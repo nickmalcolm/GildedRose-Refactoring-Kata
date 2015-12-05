@@ -23,7 +23,7 @@ module GildedRose
         {max_quality: 50, base_quality_modifier: +1}
       when "Sulfuras, Hand of Ragnaros"
         # Sulfuras does not change quality
-        {base_quality_modifier: +0}
+        {modifiable: false}
       when "Backstage passes to a TAFKAL80ETC concert"
         {base_quality_modifier: +1}
       else

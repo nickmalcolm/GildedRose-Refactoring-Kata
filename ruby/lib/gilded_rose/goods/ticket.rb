@@ -1,4 +1,3 @@
-require 'item'
 module GildedRose::Goods
   class Ticket < Base
 

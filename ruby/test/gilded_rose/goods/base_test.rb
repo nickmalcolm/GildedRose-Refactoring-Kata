@@ -19,6 +19,14 @@ class BaseTest < Test::Unit::TestCase
     assert_equal 0, item.quality
   end
 
+  test "quality never increases beyond max_quality" do
+    item = @klass.new("foo", 0, 0, base_quality_modifier: +1, max_quality: 1)
+    item.age
+    assert_equal 1, item.quality
+    item.age
+    assert_equal 1, item.quality, "Quality should remain at maximum"
+  end
+
   test "when sell_in is not in the past, update quality reduces quality by one" do
     item = @klass.new("foo", 0, 1)
     item.age
