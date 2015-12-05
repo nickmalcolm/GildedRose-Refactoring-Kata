@@ -6,10 +6,10 @@ class AgedBrieTest < Test::Unit::TestCase
     @klass = GildedRose::Goods::AgedBrie
   end
 
-  test "quality increases to 50" do
+  test "quality increases by one" do
     brie = @klass.new("Aged Brie", 0, 0)
     brie.age
-    assert_equal 2, brie.quality
+    assert_equal 1, brie.quality
   end
 
   test "quality does not increase beyond 50" do

@@ -2,12 +2,20 @@ require 'item'
 module GildedRose::Goods
   class Base < Item
 
-    attr_accessor :min_quality, :max_quality
+    # A Good cannot be less than 0 quality
+    DEFAULT_MIN_QUALITY = 0
+    # A Good can have unlimited positive quality
+    DEFAULT_MAX_QUALITY = nil
+    # As it ages, a Good decreases in quality by one
+    DEFAULT_QUALITY_MODIFIER = -1
+
+    attr_accessor :min_quality, :max_quality, :base_quality_modifier
 
     def initialize(*args)
       super(*args)
-      @min_quality = 0
-      @max_quality = nil
+      @min_quality            = DEFAULT_MIN_QUALITY
+      @max_quality            = DEFAULT_MAX_QUALITY
+      @base_quality_modifier  = DEFAULT_QUALITY_MODIFIER
     end
 
     def age
@@ -20,20 +28,27 @@ module GildedRose::Goods
     end
 
     def age_quality
-      @quality += quality_modifier if can_decrease_quality?
-    end
-
-    def can_decrease_quality?
-      @quality > @min_quality
+      @quality = confine_to_range(
+        @quality + quality_modifier,
+        min: @min_quality, max: @max_quality
+      )
     end
 
     def quality_modifier
       # When past its sell_in date, the quality drops by two
       if @sell_in >= 0
-        -1
+        base_quality_modifier
       else
-        -2
+        base_quality_modifier * 2
       end
+    end
+
+    # Confines a value to a range of values.
+    def confine_to_range(value, min: 0, max: nil)
+      # If there is an upper bound, confine
+      value = max ? [value, max].min : value
+      # If there is a lower bound, confine
+      min ? [min,  value].max : value
     end
 
   end
