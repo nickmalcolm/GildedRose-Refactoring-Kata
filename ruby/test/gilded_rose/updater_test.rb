@@ -2,12 +2,6 @@ require 'test_helper'
 
 class GildedRose::UpdaterTests < Test::Unit::TestCase
 
-  test "if Item is named Sulfuras, quality doesn't decrease" do
-    items = [GildedRose::Goods.good_for("Sulfuras, Hand of Ragnaros", 0, 10)]
-    GildedRose::Updater.new(items).update_quality()
-    assert_equal 10, items[0].quality
-  end
-
   test "if Item is Backstage Pass, and more than 10 days til sell_in, quality increases by one" do
     items = [GildedRose::Goods.good_for("Backstage passes to a TAFKAL80ETC concert", 11, 0)]
     GildedRose::Updater.new(items).update_quality()

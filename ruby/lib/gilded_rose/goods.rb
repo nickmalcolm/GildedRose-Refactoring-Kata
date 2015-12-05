@@ -5,6 +5,9 @@ module GildedRose
       options = case name
       when "Aged Brie"
         {max_quality: 50, base_quality_modifier: +1}
+      when "Sulfuras, Hand of Ragnaros"
+        # Sulfuras does not change quality
+        {base_quality_modifier: +0}
       else
         {}
       end

@@ -16,4 +16,9 @@ class BaseTest < Test::Unit::TestCase
     assert_equal +1, good.base_quality_modifier
   end
 
+  test "Sulfuras has a quality modifier of 0" do
+    good = GildedRose::Goods.good_for("Sulfuras, Hand of Ragnaros", 1, 2)
+    assert_equal 0, good.base_quality_modifier
+  end
+
 end
