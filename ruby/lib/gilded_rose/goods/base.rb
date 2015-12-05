@@ -14,6 +14,16 @@ module GildedRose::Goods
       :base_quality_modifier,
       :modifiable
 
+    # Creates a Good which can be aged.
+    # name:       (String) The name of this Good
+    # sell_in:    (Integer) The number of days in which to sell this item
+    # quality:    (Integer) The quality of the Good
+    # options:        (Optional) All have defaults
+    #   min_quality:  A lower bound on the quality of this Good
+    #   max_quality:  An upper bound on the quality of this Good
+    #   base_quality_modifier:  Each time it ages, the amount we should modify
+    #                           the Good's quality
+    #   modifiable:   Whether this Good is modifiable at all
     def initialize(name, sell_in, quality, **options)
       super(name, sell_in, quality)
       @min_quality            = options[:min_quality] || DEFAULT_MIN_QUALITY
@@ -32,6 +42,7 @@ module GildedRose::Goods
       @sell_in -= 1
     end
 
+    # Will age this Good's quality, within the min and max quality
     def age_quality
       @quality = GildedRose::Util.confine_to_range(
         @quality + quality_modifier,
@@ -39,6 +50,7 @@ module GildedRose::Goods
       )
     end
 
+    # Returns the amount to modify this Good by as it ages.
     def quality_modifier
       # When past its sell_in date, the quality drops by two
       if @sell_in >= 0

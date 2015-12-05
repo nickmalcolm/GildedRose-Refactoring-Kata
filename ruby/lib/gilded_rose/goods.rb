@@ -1,6 +1,7 @@
 module GildedRose
   module Goods
 
+    # Returns a Good for a given name which will act appropriately
     def self.good_for(name, sell_in, quality)
       aging_options = self.aging_options_for(name)
       klass = self.klass_for(name)
