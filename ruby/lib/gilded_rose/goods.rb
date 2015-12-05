@@ -27,6 +27,8 @@ module GildedRose
         {modifiable: false}
       when "Backstage passes to a TAFKAL80ETC concert"
         {base_quality_modifier: +1}
+      when "Conjured Mana Cake"
+        {base_quality_modifier: -2}
       else
         {}
       end
