@@ -9,7 +9,12 @@ module GildedRose
     end
 
     def self.klass_for(name)
-      Base
+      case name
+      when "Backstage passes to a TAFKAL80ETC concert"
+        Ticket
+      else
+        Base
+      end
     end
 
     def self.aging_options_for(name)
@@ -19,6 +24,8 @@ module GildedRose
       when "Sulfuras, Hand of Ragnaros"
         # Sulfuras does not change quality
         {base_quality_modifier: +0}
+      when "Backstage passes to a TAFKAL80ETC concert"
+        {base_quality_modifier: +1}
       else
         {}
       end
@@ -28,3 +35,4 @@ module GildedRose
 end
 
 require 'gilded_rose/goods/base'
+require 'gilded_rose/goods/ticket'

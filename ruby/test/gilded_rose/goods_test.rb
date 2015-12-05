@@ -21,4 +21,10 @@ class BaseTest < Test::Unit::TestCase
     assert_equal 0, good.base_quality_modifier
   end
 
+  test "Ticket has a quality modifier of 1, and its own class" do
+    good = GildedRose::Goods.good_for("Backstage passes to a TAFKAL80ETC concert", 1, 2)
+    assert good.is_a? GildedRose::Goods::Ticket
+    assert_equal 1, good.base_quality_modifier
+  end
+
 end
