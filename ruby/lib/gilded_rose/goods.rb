@@ -2,18 +2,17 @@ module GildedRose
   module Goods
 
     def self.good_for(name, sell_in, quality)
-      klass = case name
-      when AgedBrie::NAME
-        AgedBrie
+      options = case name
+      when "Aged Brie"
+        {max_quality: 50, base_quality_modifier: +1}
       else
-        Base
+        {}
       end
 
-      klass.new(name, sell_in, quality)
+      Base.new(name, sell_in, quality, **options)
     end
 
   end
 end
 
 require 'gilded_rose/goods/base'
-require 'gilded_rose/goods/aged_brie'

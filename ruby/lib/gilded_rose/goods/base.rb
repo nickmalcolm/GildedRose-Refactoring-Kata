@@ -11,11 +11,11 @@ module GildedRose::Goods
 
     attr_accessor :min_quality, :max_quality, :base_quality_modifier
 
-    def initialize(*args)
-      super(*args)
-      @min_quality            = DEFAULT_MIN_QUALITY
-      @max_quality            = DEFAULT_MAX_QUALITY
-      @base_quality_modifier  = DEFAULT_QUALITY_MODIFIER
+    def initialize(name, sell_in, quality, **options)
+      super(name, sell_in, quality)
+      @min_quality            = options[:min_quality] || DEFAULT_MIN_QUALITY
+      @max_quality            = options[:max_quality] || DEFAULT_MAX_QUALITY
+      @base_quality_modifier  = options[:base_quality_modifier] || DEFAULT_QUALITY_MODIFIER
     end
 
     def age
