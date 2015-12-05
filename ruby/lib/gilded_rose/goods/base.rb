@@ -53,7 +53,7 @@ module GildedRose::Goods
     # Returns the amount to modify this Good by as it ages.
     def quality_modifier
       # When past its sell_in date, the quality drops by two
-      if @sell_in >= 0
+      if @sell_in > 0
         base_quality_modifier
       else
         base_quality_modifier * 2
