@@ -1,7 +1,14 @@
 ## Tests
 
+All the tests:
 ```
 rake test
-ruby -Itest test/gilded_rose/updater_test.rb
+```
+A single test file:
+```
+ruby -Itest test/gilded_rose/goods_test.rb
+```
+The text-based test:
+```
 ruby -Itest test/texttest_fixture.rb
 ```
